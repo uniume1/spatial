@@ -9,6 +9,10 @@ import Game from './scene/Game'
 if (document) {
   ;(document as any).querySelector('#app').innerHTML = ''
 }
+console.log(
+  (window.innerWidth / 1920) * window.innerWidth,
+  (window.innerHeight / 960) * window.innerHeight
+)
 const config = {
   type: Phaser.AUTO,
   width: 1920,
@@ -21,12 +25,12 @@ const config = {
       debug: false
     }
   },
-  scene: [Game, Boot]
-  // scale: {
-  //   mode: Phaser.Scale.EXACT_FIT,
-  //   autoCenter: Phaser.Scale.CENTER_BOTH,
-  //   expandParent: true // 让画布充满整个父容器（通常是 body 元素）
-  // }
+  scene: [Game, Boot],
+  scale: {
+    mode: Phaser.Scale.EXACT_FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+    expandParent: true // 让画布充满整个父容器（通常是 body 元素）
+  }
 }
 const game = new Phaser.Game(config)
 </script>
