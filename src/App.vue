@@ -5,14 +5,10 @@
 import { ref } from 'vue'
 import Phaser from 'phaser'
 import Boot from './scene/Boot'
-import Game from './scene/Game'
+import Game from './spatial/scene/Game.ts'
 if (document) {
   ;(document as any).querySelector('#app').innerHTML = ''
 }
-console.log(
-  (window.innerWidth / 1920) * window.innerWidth,
-  (window.innerHeight / 960) * window.innerHeight
-)
 const config = {
   type: Phaser.AUTO,
   width: 1920,
@@ -21,29 +17,30 @@ const config = {
   physics: {
     default: 'arcade',
     arcade: {
-      gravity: { y: 0 },
+      gravity: { y: 200 },
       debug: false
     }
   },
-  scene: [Game, Boot],
+  scene: [Boot, Game],
   scale: {
-    mode: Phaser.Scale.EXACT_FIT,
-    autoCenter: Phaser.Scale.CENTER_BOTH,
-    expandParent: true // 让画布充满整个父容器（通常是 body 元素）
-  }
+    mode: Phaser.Scale.CENTER_BOTH
+    // autoCenter: Phaser.Scale.CENTER_VERTICALLY,
+    // expandParent: true // 让画布充满整个父容器（通常是 body 元素）
+  },
+  fullscreen: true
 }
 const game = new Phaser.Game(config)
 </script>
 
 <style>
+@font-face {
+  font-family: JinBuTi;
+  src: url(../public/DingTalk\ JinBuTi.ttf);
+}
 body {
   margin: 0;
   padding: 0;
   /* overflow: hidden; */
-}
-#spatial {
-  /* width: 100vw;
-  height: 100vh; */
+  font-family: JinBuTi;
 }
 </style>
-./scene/Game
